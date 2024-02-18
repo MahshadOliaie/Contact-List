@@ -1,0 +1,27 @@
+
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10%;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 5px 7px rgba(128, 128, 128, 0.382);
+    background-color: rgb(162, 202, 191);
+}
+
+.loginBtn{
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: rgb(18, 99, 87);
+    transition: 300ms;
+    cursor: pointer;
+}
+
+.loginBtn:hover{
+    transform: scale(1.05);
+    transition: 300ms;
+}

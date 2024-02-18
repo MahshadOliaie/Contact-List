@@ -3,43 +3,13 @@ import User from "./User";
 import './randomusers.css'
 import Gender from "./Gender";
 import SkeletonUi from "./SkeletonUi/SkeletonUi";
+import Search from "./Search";
 
 
-function RandomUsers() {
-    const [users, setUsers] = useState([])
-    const [inputValue, setInputValue] = useState("")
-    const [filteredUsers, setFilteredUsers] = useState([])
+function RandomUsers({users ,filteredUsers , setFilteredUsers}) {
+   
     const [genderSelector, setGenderSelector] = useState("")
 
-
-    useEffect(() => {
-        fetch('https://randomuser.me/api/?results=50')
-            .then(res => res.json())
-            .then(data => { setUsers(data.results); setFilteredUsers(data.results) })
-
-        return () => { };
-    }, [])
-
-
-
-    function search() {
-        let value = event.target.value
-        setInputValue(value)
-        console.log(value)
-
-
-        let filter = []
-        users.map(user => {
-            let newName = `${user.name.first} ${user.name.last}`
-            if (newName.startsWith(value.toUpperCase())) {
-                filter.push(user)
-            }
-        })
-
-        setFilteredUsers(filter)
-
-
-    }
 
     function filterGender() {
         let gender = event.target.textContent
@@ -58,7 +28,6 @@ function RandomUsers() {
     return (
         <>
             <div className="toolbar">
-                <input type="search" className="search" placeholder="search..." onChange={search} value={inputValue} />
                 <div className="btns">
                     <Gender onClick={filterGender} genderSelector={genderSelector} gender="male" />
                     <Gender onClick={filterGender} genderSelector={genderSelector} gender="female" />
