@@ -1,0 +1,99 @@
+
+.container , .form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    padding: 70px;
+    width: 400px;
+    border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%;
+    background: linear-gradient(#6d90b9, #bbc7dc);
+    box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.366);
+    animation: bubbling infinite 10s linear alternate;
+}
+
+
+.otp{
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.338);
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+
+.otp:focus-visible{
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.codeInput{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.timer{
+    margin: 5px 10px 0 0;
+    opacity: .7;
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+.editPhoneNumber{
+    font-size: small;
+    cursor: pointer;
+    transition: 400ms;
+    opacity: .7;
+    margin: 20px 0 -10px;
+}
+
+.editPhoneNumber:hover{
+    opacity: 1;
+    transform: scale(1.05);
+    transition: 400ms;
+}
+
+.number{
+    margin: 0;
+    opacity: .7;
+}
+
+.warning{
+    margin: 0;
+    margin-bottom: -10px;
+    color: rgb(167, 0, 0);
+}
+
+.success{
+    width: 200px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    animation: none;
+    border-radius: 50%;
+    background: linear-gradient(30deg ,#82f4b1 , #30c67c);
+    font-weight: 900;
+    font-size: 20px;
+    color: rgb(66, 66, 66);
+    transition: 1000ms;
+}
+
+.form {
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.title {
+    color: rgb(61, 61, 61);
+}

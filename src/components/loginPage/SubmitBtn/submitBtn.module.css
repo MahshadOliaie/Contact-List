@@ -1,0 +1,27 @@
+
+
+
+.submit {
+    border: none;
+    border-radius: 20px;
+    padding: 15px 40px;
+    background: linear-gradient(-20deg, #9bafd9, #103683ca);
+    font-weight: 600;
+    font-size: 14px;
+    transition: 500ms;
+}
+
+.submit:hover {
+    border-radius: 10px;
+    transition: 500ms;
+}
+
+
+#notActive{
+    pointer-events: none;
+    opacity: .6;
+}
+
+#active{
+    opacity: 1;
+}
