@@ -1,0 +1,54 @@
+:root {
+    --loader-background-color: #e2e2e2;
+    --loader-highlight-color: #d0d0d0;
+}
+
+
+
+.divImg{
+    background: linear-gradient(90deg, var(--loader-background-color) 25%, var(--loader-highlight-color) 50%, var(--loader-background-color) 75%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: 200% 100%;
+    animation: loading 2s infinite ease-in-out;
+}
+
+.divTitle{
+    background: linear-gradient(90deg, var(--loader-background-color) 25%, var(--loader-highlight-color) 50%, var(--loader-background-color) 75%);
+    width: 50%;
+    border-radius: 50px;
+    height: 20px;
+    margin: 15px;
+    background-size: 200% 100%;
+    animation: loading 2s infinite ease-in-out;
+}
+
+.divTitleInfo{
+    background: linear-gradient(90deg, var(--loader-background-color) 25%, var(--loader-highlight-color) 50%, var(--loader-background-color) 75%);
+    width: 90%;
+    border-radius: 50px;
+    height: 30px;
+    margin: 3px 0 7px;
+    background-size: 200% 100%;
+    animation: loading 2s infinite ease-in-out;
+}
+
+.divIcon{
+    background: linear-gradient(90deg, var(--loader-background-color) 25%, var(--loader-highlight-color) 50%, var(--loader-background-color) 75%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: 200% 100%;
+    animation: loading 2s infinite ease-in-out;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
