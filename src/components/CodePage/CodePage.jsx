@@ -13,7 +13,7 @@ function CodePage() {
     const [expire, setExpire] = useState(false)
     const [inputCode, setInputCode] = useState("")
     const [warning, setWarning] = useState("")
-    const {number} = useContext(PhoneNumberContext)
+    const { number } = useContext(PhoneNumberContext)
 
     useEffect(() => {
         let otp = Math.floor((Math.random() * 1000000) + 10000)
@@ -27,7 +27,7 @@ function CodePage() {
     function numberPage() {
         ReactDOM.createRoot(document.getElementById('root')).render(
             <React.StrictMode>
-                <PhoneNumber/>
+                <PhoneNumber />
             </React.StrictMode>,
         )
     }
@@ -62,21 +62,23 @@ function CodePage() {
     }
 
     return (
-        <div className={(warning == "success")? `${CSS.container} ${CSS.success}` : `${CSS.container}`}>
-            {(warning == "success") ? <p>loged in</p> :
-                <>
-                    <h1 className={CSS.title}>Enter Code</h1>
-                    <form className={CSS.form}>
-                        <p className={CSS.number}>{number}</p>
-                        <div className={CSS.codeInput}>
-                            <CodeInput getCode={(inputCode) => updateInputCode(inputCode)} />
-                            <Timer expire={expireFn} />
-                            <p className={CSS.warning}>{warning}</p>
-                        </div>
-                        {(expire) ? <SubmitBtn content={"Resend Code"} onClick={remount} /> : <SubmitBtn content={"Done"} onClick={checkCode} />}
-                    </form>
-                    <p className={CSS.editPhoneNumber} onClick={numberPage}>Wrong Number?</p>
-                </>}
+        <div className={CSS.body}>
+            <div className={(warning == "success") ? `${CSS.container} ${CSS.success}` : `${CSS.container}`}>
+                {(warning == "success") ? <p>loged in</p> :
+                    <>
+                        <h1 className={CSS.title}>Enter Code</h1>
+                        <form className={CSS.form}>
+                            <p className={CSS.number}>{number}</p>
+                            <div className={CSS.codeInput}>
+                                <CodeInput getCode={(inputCode) => updateInputCode(inputCode)} />
+                                <Timer expire={expireFn} />
+                                <p className={CSS.warning}>{warning}</p>
+                            </div>
+                            {(expire) ? <SubmitBtn content={"Resend Code"} onClick={remount} /> : <SubmitBtn content={"Done"} onClick={checkCode} />}
+                        </form>
+                        <p className={CSS.editPhoneNumber} onClick={numberPage}>Wrong Number?</p>
+                    </>}
+            </div>
         </div>
     )
 }
