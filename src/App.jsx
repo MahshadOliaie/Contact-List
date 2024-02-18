@@ -11,7 +11,7 @@ function App() {
   const [inputValue, setInputValue] = useState("")
   const [users, setUsers] = useState([])
   const [filteredUsers, setFilteredUsers] = useState([])
-  const [isLoggedIn , setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=50')
@@ -21,7 +21,7 @@ function App() {
     return () => { };
   }, [])
 
-  function loggedInSetter(){
+  function loggedInSetter() {
     setIsLoggedIn(true)
   }
 
@@ -61,12 +61,14 @@ function App() {
             numberSetter(params)
           }
         }}>
-          <MyHeader inputValue={inputValue} onChange={search} />
 
           {isLoggedIn ?
-            <RandomUsers users={users} filteredUsers={filteredUsers} setFilteredUsers={setFilteredUsers} />
+            <>
+              <MyHeader inputValue={inputValue} onChange={search} />
+              <RandomUsers users={users} filteredUsers={filteredUsers} setFilteredUsers={setFilteredUsers} />
+            </>
             :
-            <LoginPage/>
+            <LoginPage />
           }
 
         </PhoneNumberContext.Provider>
