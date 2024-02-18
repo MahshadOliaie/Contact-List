@@ -4,13 +4,13 @@ import SubmitBtn from '../SubmitBtn/SubmitBtn';
 import CSS from './loginPage.module.css'
 import CodePage from '../../CodePage/CodePage';
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import PhoneNumberContext from '../../../assets/context/PhoneNumberContext';
 
 function LoginPage() {
     const [inputValue, setInputValue] = useState("")
     const [submitState, setSubmitState] = useState("notActive")
     const { numberSetter } = useContext(PhoneNumberContext)
+    const [isPhoneEntered, setIsPhoneEntered] = useState(false)
 
     function checkNumber() {
         let value = event.target.value
@@ -27,23 +27,27 @@ function LoginPage() {
     function submit() {
         event.preventDefault()
         numberSetter(`+98${inputValue}`)
-        ReactDOM.createRoot(document.getElementById('root')).render(
-            <CodePage />
-        )
+        setIsPhoneEntered(true)
     }
 
     return (
 
-        <div className={CSS.body}>
-            <div className={CSS.container}>
-                <h1 className={CSS.title}>Login</h1>
-                <form className={CSS.form}>
-                    <PhoneNumberInput value={inputValue} onChange={checkNumber} />
-                    <SubmitBtn content={"Send Code"} onClick={submit} state={submitState} />
-                    <p className={CSS.goToSignUp}>Create an account</p>
-                </form>
-            </div>
-        </div>
+        <>
+            {isPhoneEntered ?
+                <CodePage setIsPhoneEntered={setIsPhoneEntered} />
+                :
+                <div className={CSS.body}>
+                    <div className={CSS.container}>
+                        <h1 className={CSS.title}>Login</h1>
+                        <form className={CSS.form}>
+                            <PhoneNumberInput value={inputValue} onChange={checkNumber} />
+                            <SubmitBtn content={"Send Code"} onClick={submit} state={submitState} />
+                            <p className={CSS.goToSignUp}>Create an account</p>
+                        </form>
+                    </div>
+                </div>
+            }
+        </>
 
     )
 }

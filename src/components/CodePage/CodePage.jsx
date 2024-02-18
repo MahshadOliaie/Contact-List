@@ -1,41 +1,39 @@
 
 import PhoneNumberContext from '../../assets/context/PhoneNumberContext'
-import PhoneNumber from '../loginPage/LoginPage/LoginPage'
+import UserContext from '../../assets/context/UserContext'
 import SubmitBtn from '../loginPage/SubmitBtn/SubmitBtn'
 import CodeInput from './CodeInput'
 import Timer from './Timer'
 import CSS from './codePage.module.css'
 import React, { useContext, useEffect, useState } from 'react'
-import ReactDOM from 'react-dom/client'
 
-function CodePage() {
+function CodePage({ setIsPhoneEntered }) {
     const [OTP, setOTP] = useState("")
     const [expire, setExpire] = useState(false)
     const [inputCode, setInputCode] = useState("")
     const [warning, setWarning] = useState("")
     const { number } = useContext(PhoneNumberContext)
+    const { loggedInSetter } = useContext(UserContext)
+    const [reMount, setReMount] = useState(false)
+    const [time, setTime] = useState(120)
 
     useEffect(() => {
         let otp = Math.floor((Math.random() * 1000000) + 10000)
         setOTP(otp)
         console.log(otp)
         return () => { }
-    }, [])
+    }, [reMount])
 
 
 
     function numberPage() {
-        ReactDOM.createRoot(document.getElementById('root')).render(
-            <React.StrictMode>
-                <PhoneNumber />
-            </React.StrictMode>,
-        )
+        setIsPhoneEntered(false)
     }
 
     function remount() {
-        ReactDOM.createRoot(document.getElementById('root')).render(
-            <CodePage />
-        )
+        setTime(120)
+        setExpire(false)
+        setReMount((prev) => !prev)
     }
 
     function updateInputCode(inputCode) {
@@ -46,7 +44,7 @@ function CodePage() {
     function checkCode() {
         event.preventDefault()
         if (inputCode == OTP) {
-            setWarning("success")
+            loggedInSetter()
         }
 
         if (inputCode == "")
@@ -57,9 +55,6 @@ function CodePage() {
             setWarning("wrong code!!!")
     }
 
-    function expireFn() {
-        setExpire(true)
-    }
 
     return (
         <div className={CSS.body}>
@@ -71,7 +66,7 @@ function CodePage() {
                             <p className={CSS.number}>{number}</p>
                             <div className={CSS.codeInput}>
                                 <CodeInput getCode={(inputCode) => updateInputCode(inputCode)} />
-                                <Timer expire={expireFn} />
+                                <Timer setExpire={setExpire} time={time} setTime={setTime} />
                                 <p className={CSS.warning}>{warning}</p>
                             </div>
                             {(expire) ? <SubmitBtn content={"Resend Code"} onClick={remount} /> : <SubmitBtn content={"Done"} onClick={checkCode} />}

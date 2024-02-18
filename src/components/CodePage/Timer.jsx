@@ -2,8 +2,7 @@ import { useEffect, useState, React } from "react"
 import CSS from './codePage.module.css'
 
 
-function Timer({ expire }) {
-    const [time, setTime] = useState(120)
+function Timer({ setExpire , time , setTime }) {
 
     useEffect(() => {
         let timer
@@ -17,7 +16,7 @@ function Timer({ expire }) {
     }, [time])
 
     if (time == 0) {
-        expire()
+        setExpire(true)
     }
 
     return (
