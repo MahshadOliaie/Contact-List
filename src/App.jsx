@@ -6,12 +6,14 @@ import MyHeader from "./components/MyHeader/MyHeader"
 import UserContext from "./assets/context/UserContext"
 
 
+
 function App() {
-  const [number, setNumber] = useState("")
+  const [number, setNumber] = useState(JSON.parse(localStorage.getItem("number")) || "")
   const [inputValue, setInputValue] = useState("")
   const [users, setUsers] = useState([])
   const [filteredUsers, setFilteredUsers] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem("isLoggedIn")) || false)
+
 
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=50')
@@ -21,8 +23,17 @@ function App() {
     return () => { };
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn))
+    localStorage.setItem("number", JSON.stringify(number))
+  }, [isLoggedIn , number])
+
   function loggedInSetter() {
     setIsLoggedIn(true)
+  }
+
+  function logOutSetter() {
+    setIsLoggedIn(false)
   }
 
   function search() {
@@ -47,10 +58,6 @@ function App() {
 
   function numberSetter(phone) {
     setNumber(phone)
-  }
-
-  function logOutSetter(){
-    setIsLoggedIn(false)
   }
 
   return (
