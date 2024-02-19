@@ -49,6 +49,10 @@ function App() {
     setNumber(phone)
   }
 
+  function logOutSetter(){
+    setIsLoggedIn(false)
+  }
+
   return (
     <>
       <UserContext.Provider value={{
@@ -59,7 +63,8 @@ function App() {
           number,
           numberSetter: (params) => {
             numberSetter(params)
-          }
+          },
+          logOutSetter
         }}>
 
           {isLoggedIn ?

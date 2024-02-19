@@ -101,12 +101,12 @@ img {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 110px;
 }
 
 .toolbar{
     width: 82%;
     margin: auto;
+    margin-top: 50px;
 }
 
 
