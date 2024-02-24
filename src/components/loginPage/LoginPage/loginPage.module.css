@@ -11,7 +11,13 @@
     border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%;
     background: linear-gradient(#6d90b9, #bbc7dc);
     box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.366);
-    animation: bubbling infinite 10s linear alternate;
+    animation: bubbling infinite 2s linear alternate;
+}
+
+@keyframes bubbling {
+    100% {
+        border-radius: 20% 50% 20% 50%/ 50% 20% 50% 20%;
+    }
 }
 
 .form {
@@ -37,24 +43,6 @@
     opacity: 1;
     transform: scale(1.05);
     transition: 400ms;
-}
-
-@keyframes bubbling {
-    0% {
-        border-radius: 20% 50% 20% 50%/ 50% 20% 50% 20%;
-    }
-
-    40% {
-        border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%;
-    }
-
-    60% {
-        border-radius: 20% 50% 20% 50%/ 50% 20% 50% 20%;
-    }
-
-    100% {
-        border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%;
-    }
 }
 
 

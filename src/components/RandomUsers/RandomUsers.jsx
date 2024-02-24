@@ -35,6 +35,7 @@ function RandomUsers({users ,filteredUsers , setFilteredUsers}) {
             </div>
             <div className="userContainer">{
                 (users.length > 0) ? filteredUsers.map((user, index) => {
+                    console.log(user)
                     return <User data={user} key={index} />
                 }) : [...new Array(50)].map(item => {
                     return <SkeletonUi />

@@ -11,8 +11,8 @@ body {
     display: flex;
     height: 100vh;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: whitesmoke;
     margin: 0;
+    background-color: whitesmoke;
     justify-content: center;
 }
 
